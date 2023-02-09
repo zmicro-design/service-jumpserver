@@ -1,0 +1,27 @@
+#!/bin/bash
+
+service::config_set() {
+  config::check_or_set $1 $2 $SERVICE_CONFIG "请输入 $1" $3
+}
+
+check() {
+  if [ "$DEBUG" = "true" ]; then
+    log::info "[DEBUG][service]: $SERVICE_CONFIG"
+    cat $SERVICE_CONFIG
+  fi
+
+  service::config_set SERVICE_JUMPSERVER_SECRET_KEY text $(os::random_string 8)
+  service::config_set SERVICE_JUMPSERVER_BOOTSTRAP_TOKEN text $(os::random_string 16)
+
+  service::config_set SERVICE_JUMPSERVER_MYSQL_HOST text
+  service::config_set SERVICE_JUMPSERVER_MYSQL_PORT text
+  service::config_set SERVICE_JUMPSERVER_MYSQL_USER text
+  service::config_set SERVICE_JUMPSERVER_MYSQL_PASS text
+  service::config_set SERVICE_JUMPSERVER_MYSQL_DB_NAME text
+
+  service::config_set SERVICE_JUMPSERVER_REDIS_HOST text
+  service::config_set SERVICE_JUMPSERVER_REDIS_PORT text
+  service::config_set SERVICE_JUMPSERVER_REDIS_PASSWORD text
+}
+
+check $@
