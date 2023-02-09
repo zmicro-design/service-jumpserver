@@ -14,13 +14,13 @@ check() {
   service::config_set SERVICE_JUMPSERVER_BOOTSTRAP_TOKEN text $(os::random_string 16)
 
   service::config_set SERVICE_JUMPSERVER_MYSQL_HOST text
-  service::config_set SERVICE_JUMPSERVER_MYSQL_PORT text
-  service::config_set SERVICE_JUMPSERVER_MYSQL_USER text
+  service::config_set SERVICE_JUMPSERVER_MYSQL_PORT text 6379
+  service::config_set SERVICE_JUMPSERVER_MYSQL_USER text root
   service::config_set SERVICE_JUMPSERVER_MYSQL_PASS text
   service::config_set SERVICE_JUMPSERVER_MYSQL_DB_NAME text
 
   service::config_set SERVICE_JUMPSERVER_REDIS_HOST text
-  service::config_set SERVICE_JUMPSERVER_REDIS_PORT text
+  service::config_set SERVICE_JUMPSERVER_REDIS_PORT text 6379
   service::config_set SERVICE_JUMPSERVER_REDIS_PASSWORD text
 }
 
