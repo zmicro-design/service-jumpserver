@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   jumpserver:
     image: whatwewant/jumpserver:${SERVICE_JUMPSERVER_IMAGE_VERSION}
